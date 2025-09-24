@@ -15,7 +15,7 @@ function App() {
   const [boldProgress, setBoldProgress] = useState(0)
   const [completedMessages, setCompletedMessages] = useState(new Set())
   const [typewriterText, setTypewriterText] = useState("Watch")
-  const [typewriterIndex] = useState(0)
+  const [, setTypewriterIndex] = useState<number>(0)
   const navigate = useNavigate()
 
   useEffect(() => {
