@@ -15,7 +15,7 @@ function App() {
   const [boldProgress, setBoldProgress] = useState(0)
   const [completedMessages, setCompletedMessages] = useState(new Set())
   const [typewriterText, setTypewriterText] = useState("Watch")
-  const [typewriterIndex, setTypewriterIndex] = useState(0)
+  const [typewriterIndex] = useState(0)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -175,7 +175,7 @@ function App() {
                     const shouldBeBold = isCompleted || (index === currentMessageIndex && wordIndex < boldProgress)
 
                     // Define colors for first 4 words in first message
-                    const getWordColor = (word, wordIndex, messageIndex) => {
+                    const getWordColor = (word: string, wordIndex: number, messageIndex: number) => {
                       if (messageIndex === 0 && wordIndex < 4) {
                         const colors = {
                           'Glass': '#00FFFF', // Cyan for glass
@@ -183,7 +183,7 @@ function App() {
                           'Gradients': '#8A2BE2', // Purple for gradients
                           'Cats': '#FF1493' // Pink for cats
                         }
-                        return colors[word.replace(/[^a-zA-Z]/g, '')] || '#1f2937'
+                        return colors[word.replace(/[^a-zA-Z]/g, '') as keyof typeof colors] || '#1f2937'
                       }
                       return currentMessageIndex === 2 ? '#FEEF20' : '#1f2937'
                     }
